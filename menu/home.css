@@ -1,0 +1,100 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+    min-height: 100vh;
+    background-image:  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/df900d32-8fca-4dfe-a632-0b2773087fe0.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: white;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* Contenedor central */
+
+.inicio {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 50px;
+}
+
+/* TÍTULO */
+
+.titulo {
+    font-size: clamp(50px, 8vw, 110px);
+
+    font-weight: bold;
+    letter-spacing: 8px;
+
+    color: #d6d0c5;
+
+    text-align: center;
+
+    text-shadow:
+        3px 3px 0px #191919,
+        0 0 10px rgba(255, 220, 150, 0.3),
+        0 0 25px rgba(255, 180, 80, 0.15);
+
+    /* Hace que las letras parezcan ligeramente desgastadas */
+    filter: contrast(1.2);
+}
+
+/* BOTÓN */
+
+.btn-jugar {
+    width: 280px;
+    height: 70px;
+
+    background: rgba(20, 20, 20, 0.85);
+
+    border: 2px solid #a99d87;
+
+    color: #d6d0c5;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 24px;
+    font-weight: bold;
+
+    letter-spacing: 5px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Cuando pasas el mouse */
+
+.btn-jugar:hover {
+    transform: scale(1.08);
+
+    background: rgba(130, 100, 60, 0.35);
+
+    color: white;
+
+    box-shadow:
+        0 0 10px rgba(180, 140, 80, 0.4),
+        0 0 25px rgba(180, 140, 80, 0.2);
+}
+
+/* Cuando haces click */
+
+.btn-jugar:active {
+    transform: scale(0.98);
+}

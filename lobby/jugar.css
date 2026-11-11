@@ -1,0 +1,405 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+    min-height: 100vh;
+    background-image:  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/df900d32-8fca-4dfe-a632-0b2773087fe0.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: white;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* =========================
+   MENÚ PRINCIPAL
+   ========================= */
+
+.menu-juego {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 5%;
+}
+
+
+/* =========================
+   PANELES LATERALES
+   ========================= */
+
+.panel {
+    width: 220px;
+    height: 380px;
+
+    position: relative;
+
+    background: rgba(15, 15, 15, 0.85);
+
+    border: 2px solid #a99d87;
+
+    color: #d6d0c5;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 28px;
+    font-weight: bold;
+
+    letter-spacing: 4px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* Texto */
+
+.panel span {
+    position: absolute;
+
+    top: 25px;
+    left: 0;
+
+    width: 100%;
+
+    text-align: center;
+}
+
+
+/* Efecto al pasar el mouse */
+
+.panel:hover {
+    transform: scale(1.05);
+
+    background: rgba(80, 65, 45, 0.45);
+
+    box-shadow:
+        0 0 15px rgba(180, 150, 100, 0.3);
+}
+
+
+/* =========================
+   CÍRCULO LVL
+   ========================= */
+
+.nivel {
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background: rgba(15, 15, 15, 0.9);
+
+    border: 3px solid #a99d87;
+
+    color: #d6d0c5;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 38px;
+    font-weight: bold;
+
+    letter-spacing: 5px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.nivel:hover {
+    transform: scale(1.12);
+
+    background: rgba(100, 80, 50, 0.4);
+
+    box-shadow:
+        0 0 20px rgba(180, 150, 100, 0.4);
+}
+
+.nivel:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================
+   TORRETA
+   ========================= */
+
+.torreta {
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    left: 50%;
+    top: 55%;
+
+    transform: translate(-50%, -50%);
+}
+
+
+/* Base */
+
+.base-torreta {
+    position: absolute;
+
+    width: 90px;
+    height: 25px;
+
+    background: #777;
+
+    left: 20px;
+    bottom: 10px;
+
+    border: 2px solid #444;
+
+    border-radius: 5px;
+}
+
+
+/* Cuerpo */
+
+.cuerpo-torreta {
+    position: absolute;
+
+    width: 55px;
+    height: 55px;
+
+    background: #888;
+
+    left: 37px;
+    bottom: 30px;
+
+    border: 2px solid #444;
+
+    border-radius: 8px 8px 4px 4px;
+}
+
+
+/* Cañón */
+
+.canon {
+    position: absolute;
+
+    width: 70px;
+    height: 15px;
+
+    background: #666;
+
+    left: 55px;
+    top: 42px;
+
+    border: 2px solid #444;
+
+    border-radius: 3px;
+
+    transform: rotate(-10deg);
+}
+
+/* PANEL DE NIVELES */
+
+.panel-niveles {
+    position: fixed;
+
+    width: 300px;
+    height: 700px;
+
+    top: 50%;
+    left: 45%;
+
+    transform: translate(-50%, -50%) scale(0);
+
+    background: #222;
+    border: 5px solid #555;
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    z-index: 100;
+
+    transition: 0.25s ease;
+}
+
+
+/* PANEL ABIERTO */
+
+.panel-niveles.activo {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+/* IMAGEN */
+
+.panel-niveles img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* BOTÓN CERRAR */
+
+.cerrar-niveles {
+    position: absolute;
+
+    top: 10px;
+    right: 10px;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #222;
+    color: white;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    z-index: 101;
+}
+
+.cerrar-niveles:hover {
+    background: #555;
+}
+
+.anillo {
+    position: absolute;
+    left: 117.5px;
+    top: 409px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 4px solid #d6a84f;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    display: block;
+    z-index: 100;
+    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+
+.anillo span {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    transition:
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.anillo:hover span {
+    background: rgba(255, 200, 70, 0.35);
+
+    box-shadow:
+        0 0 10px rgba(255, 200, 70, 0.9),
+        0 0 25px rgba(255, 200, 70, 0.7),
+        0 0 45px rgba(255, 200, 70, 0.4);
+}
+
+
+.anillo:hover {
+    border-color: #ffd76a;
+
+    box-shadow:
+        0 0 8px rgba(255, 200, 80, 0.8),
+        0 0 20px rgba(255, 200, 80, 0.5);
+
+    transform: scale(1.08);
+}
+
+.btn-back {
+display: flex;
+justify-content: center;
+align-items: center;
+
+
+width: 60px;
+height: 60px;
+
+/* Fondo */
+background: transparent;
+
+/* Borde rojo */
+border: 3px solid #8b1e1e;
+
+border-radius: 50%;
+
+cursor: pointer;
+
+transition: all 0.2s ease;
+
+
+}
+
+/* Flecha dorada */
+.btn-back svg {
+width: 34px;
+height: 34px;
+
+
+fill: #d6a84f;
+
+transition: all 0.2s ease;
+
+
+}
+
+/* Al pasar el mouse */
+.btn-back:hover {
+border-color: #c62828;
+
+
+background: rgba(198, 40, 40, 0.15);
+
+box-shadow:
+    0 0 8px rgba(198, 40, 40, 0.6),
+    0 0 18px rgba(198, 40, 40, 0.4);
+
+transform: scale(1.08);
+
+}
+
+/* La flecha también brilla */
+.btn-back:hover svg {
+fill: #ffd76a;
+
+
+filter:
+    drop-shadow(0 0 5px #ffd76a)
+    drop-shadow(0 0 10px #d6a84f);
+}
+
+/* Al presionar */
+.btn-back:active {
+transform: scale(0.95);
+}

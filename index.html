@@ -1,0 +1,27 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cargando...</title>
+
+    <!-- Redirección automática después de 2 segundos -->
+    <meta http-equiv="refresh" content="2; url=menu/home.html">
+</head>
+
+<body>
+
+    <h1>Cargando...</h1>
+    <p>Espera un momento...</p>
+
+    <script>
+        setTimeout(function() {
+            window.location.href = "menu/home.html";
+        }, 2000);
+    </script>
+
+</body>
+</html>
+```

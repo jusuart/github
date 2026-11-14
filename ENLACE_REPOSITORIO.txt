@@ -1,0 +1,6 @@
+Repositorio del proyecto monster_days (Git):
+
+  https://github.com/SU_USUARIO/monster_days     <-- REEMPLACE por el enlace real de su repositorio
+
+Aprendiz: NOMBRE APELLIDO
+Evidencia: GA7-220501096-AA2-EV01

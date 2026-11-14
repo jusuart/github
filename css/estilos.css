@@ -1,0 +1,780 @@
+/* ==========================================================
+   monster_days – Hoja de estilos
+   Estilo medieval: piedra, madera, pergamino y oro.
+   ========================================================== */
+
+:root {
+  --piedra-900: #14110e;
+  --piedra-800: #1e1a16;
+  --piedra-700: #2c2620;
+  --piedra-500: #5b5147;
+  --madera: #6b4423;
+  --madera-clara: #94622f;
+  --pergamino: #ecdcb2;
+  --pergamino-osc: #d6c08a;
+  --tinta: #2a1c10;
+  --oro: #d9a93c;
+  --oro-claro: #f2cf72;
+  --brasa: #c0452b;
+  --hierba: #3f5a2e;
+  --texto: #f1e6c8;
+  --fuente-titulo: "Palatino Linotype", "Book Antiqua", Palatino, "URW Palladio L", Georgia, serif;
+  --fuente-texto: Georgia, "Times New Roman", serif;
+  --radio: 8px;
+  --sombra: 0 6px 18px rgba(0, 0, 0, .55);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--fuente-texto);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--texto);
+  background:
+    radial-gradient(ellipse at 50% 0%, #3a2c1f 0%, transparent 60%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.015) 0 2px, transparent 2px 46px),
+    var(--piedra-900);
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  letter-spacing: .04em;
+  margin: 0 0 .5em;
+  line-height: 1.15;
+}
+
+h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); color: var(--oro-claro); text-align: center; }
+h3 { font-size: 1.15rem; }
+
+kbd {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: .8em;
+  padding: 0 .4em;
+  border: 1px solid var(--piedra-500);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--piedra-700);
+  color: var(--texto);
+}
+
+/* ---------- Accesibilidad ---------- */
+.solo-lectores {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+.saltar {
+  position: absolute; left: .5rem; top: -4rem;
+  background: var(--oro); color: var(--tinta);
+  padding: .5rem 1rem; border-radius: var(--radio); z-index: 100;
+}
+.saltar:focus { top: .5rem; }
+
+:focus-visible { outline: 3px solid var(--oro-claro); outline-offset: 3px; }
+
+/* ---------- Estructura general ---------- */
+#app { max-width: 1100px; margin: 0 auto; padding: 1.25rem 1rem 2rem; }
+
+.pantalla { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+.pantalla[hidden] { display: none; }
+
+/* ---------- Botones ---------- */
+.boton {
+  font-family: var(--fuente-titulo);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--pergamino);
+  min-width: 11rem;
+  min-height: 2.9rem;           /* objetivo táctil cómodo */
+  padding: .65rem 1.5rem;
+  border: 2px solid #3a2410;
+  border-radius: var(--radio);
+  background: linear-gradient(180deg, var(--madera-clara), var(--madera));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 3px 0 #3a2410, var(--sombra);
+  cursor: pointer;
+  transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
+}
+.boton:hover { transform: translateY(-2px); filter: brightness(1.12); }
+.boton:active { transform: translateY(2px); box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 0 #3a2410; }
+.boton:disabled { opacity: .45; cursor: not-allowed; transform: none; filter: grayscale(.6); }
+
+.boton-primario {
+  color: var(--tinta);
+  border-color: #7a5410;
+  background: linear-gradient(180deg, var(--oro-claro), var(--oro));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 3px 0 #7a5410, var(--sombra);
+}
+.boton-sutil {
+  background: linear-gradient(180deg, var(--piedra-500), var(--piedra-700));
+  border-color: #0e0c0a;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 3px 0 #0e0c0a, var(--sombra);
+}
+
+/* ---------- Menú principal ---------- */
+.cabecera-menu { text-align: center; padding-top: 1rem; }
+.castillo { width: min(340px, 70vw); color: var(--piedra-700); filter: drop-shadow(0 0 18px rgba(217,169,60,.25)); }
+.sobretitulo { margin: .5rem 0 0; letter-spacing: .35em; text-transform: uppercase; font-size: .85rem; color: var(--oro); }
+#titulo-juego {
+  font-size: clamp(2.6rem, 9vw, 5rem);
+  color: var(--oro-claro);
+  text-shadow: 0 3px 0 var(--madera), 0 6px 18px rgba(0,0,0,.7);
+  margin-bottom: .2em;
+}
+.lema { margin: 0; font-style: italic; color: var(--pergamino-osc); }
+
+.menu-botones { list-style: none; margin: 0; padding: 0; display: grid; gap: .9rem; justify-items: center; }
+.pie { margin-top: 1.5rem; font-size: .8rem; color: var(--piedra-500); text-align: center; }
+.pie p { margin: 0; }
+
+/* ---------- Pergamino (instrucciones y opciones) ---------- */
+.pergamino {
+  width: min(680px, 100%);
+  padding: 1.5rem 1.75rem;
+  color: var(--tinta);
+  background:
+    radial-gradient(ellipse at center, transparent 55%, rgba(120,80,20,.35) 100%),
+    var(--pergamino);
+  border: 3px double var(--madera);
+  border-radius: 6px;
+  box-shadow: var(--sombra);
+}
+.pergamino h3 { color: var(--madera); border-bottom: 1px solid var(--pergamino-osc); padding-bottom: .25rem; }
+.pergamino kbd { background: var(--pergamino-osc); color: var(--tinta); border-color: var(--madera); }
+.pasos { margin: 0 0 1rem; padding-left: 1.3rem; }
+.pasos li { margin-bottom: .5rem; }
+.leyenda-torres { margin: 0; padding-left: 1.2rem; }
+
+/* ---------- Formulario de opciones ---------- */
+.formulario { display: grid; gap: 1.1rem; }
+.campo { display: grid; gap: .35rem; }
+.campo-check { grid-template-columns: auto 1fr; align-items: center; gap: .6rem; }
+.campo label { font-weight: 700; }
+.campo input[type="range"] { width: 100%; accent-color: var(--madera); height: 1.6rem; }
+.campo input[type="checkbox"] { width: 1.4rem; height: 1.4rem; accent-color: var(--madera); }
+.campo select {
+  font: inherit; padding: .55rem .6rem; min-height: 2.6rem;
+  border: 2px solid var(--madera); border-radius: 6px;
+  background: #fff8e3; color: var(--tinta);
+}
+
+/* ---------- Selección de nivel ---------- */
+.rejilla-niveles {
+  list-style: none; margin: 0; padding: 0; width: 100%;
+  display: grid; gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.tarjeta-nivel {
+  position: relative; height: 100%;
+  display: flex; flex-direction: column; gap: .35rem; align-items: flex-start;
+  padding: 1.25rem 1.1rem 1.1rem;
+  background: linear-gradient(160deg, var(--piedra-700), var(--piedra-800));
+  border: 2px solid var(--piedra-500);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  overflow: hidden;
+  transition: transform .2s ease, border-color .2s ease;
+}
+.tarjeta-nivel:hover { transform: translateY(-4px); border-color: var(--oro); }
+.tarjeta-nivel p { margin: 0; font-size: .95rem; color: var(--pergamino-osc); }
+.tarjeta-nivel .boton { margin-top: auto; min-width: 0; width: 100%; font-size: .9rem; }
+.tarjeta-nivel .dificultad { color: var(--oro); letter-spacing: .2em; font-size: 1.1rem; }
+.numero-nivel {
+  position: absolute; right: .6rem; top: -.2rem;
+  font-family: var(--fuente-titulo); font-size: 4.5rem; font-weight: 700;
+  color: rgba(217,169,60,.14); line-height: 1; pointer-events: none;
+}
+.tarjeta-nivel.bloqueada { opacity: .6; }
+.tarjeta-nivel.bloqueada:hover { transform: none; border-color: var(--piedra-500); }
+
+/* ---------- Partida ---------- */
+.pantalla-juego { align-items: stretch; gap: .75rem; }
+
+#hud {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.25rem;
+  padding: .65rem 1rem;
+  background: linear-gradient(180deg, var(--piedra-700), var(--piedra-800));
+  border: 2px solid var(--piedra-500);
+  border-radius: var(--radio);
+}
+#hud .dato { display: flex; align-items: center; gap: .5rem; }
+#hud label, #hud .etiqueta {
+  font-family: var(--fuente-titulo); text-transform: uppercase; letter-spacing: .08em;
+  font-size: .8rem; color: var(--oro);
+}
+#hud .valor, #txt-vida, #txt-oleada { font-weight: 700; font-variant-numeric: tabular-nums; }
+#txt-monedas::before { content: "● "; color: var(--oro-claro); }
+meter, progress { width: 110px; height: 14px; }
+
+.escenario { display: grid; grid-template-columns: 1fr 190px; gap: .75rem; align-items: start; }
+
+#juego {
+  width: 100%; height: auto; aspect-ratio: 16 / 9; display: block;
+  background: var(--hierba);
+  border: 3px solid var(--madera);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  cursor: crosshair;
+  touch-action: manipulation;
+}
+
+#panel-torres {
+  padding: .8rem;
+  background: linear-gradient(180deg, var(--piedra-700), var(--piedra-800));
+  border: 2px solid var(--piedra-500);
+  border-radius: var(--radio);
+}
+#panel-torres h3 { color: var(--oro); text-align: center; text-transform: uppercase; font-size: .95rem; letter-spacing: .1em; }
+#panel-torres ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+
+.boton-torre {
+  width: 100%; min-height: 3rem;
+  display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: .5rem;
+  padding: .4rem .6rem;
+  font: inherit; font-size: .95rem; text-align: left; color: var(--texto);
+  background: var(--piedra-900);
+  border: 2px solid var(--piedra-500);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease;
+}
+.boton-torre:hover:not(:disabled) { border-color: var(--oro); }
+.boton-torre[aria-pressed="true"] { border-color: var(--oro-claro); background: #3a2c14; box-shadow: 0 0 0 2px var(--oro) inset; }
+.boton-torre:disabled { opacity: .45; cursor: not-allowed; }
+.boton-torre .costo { font-weight: 700; color: var(--oro-claro); }
+.boton-torre .costo::before { content: "● "; font-size: .7em; }
+
+.ico { width: 24px; height: 24px; display: inline-block; }
+.ico-arquero { background: var(--hierba); clip-path: polygon(50% 0, 100% 100%, 0 100%); outline: 2px solid #9ccc65; }
+.ico-catapulta { background: var(--madera-clara); border: 2px solid #3a2410; }
+.ico-mago { background: #8e5ad1; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }
+
+.info-torre { margin: .8rem 0 0; font-size: .85rem; color: var(--pergamino-osc); min-height: 4.2em; }
+
+.barra-acciones { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
+.mensaje { min-height: 1.6em; margin: 0; text-align: center; color: var(--oro-claro); font-style: italic; }
+
+/* ---------- Ventanas modales ---------- */
+dialog {
+  width: min(420px, 92vw);
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  color: var(--tinta);
+  background:
+    radial-gradient(ellipse at center, transparent 55%, rgba(120,80,20,.35) 100%),
+    var(--pergamino);
+  border: 4px double var(--madera);
+  border-radius: 8px;
+  box-shadow: 0 0 0 100vmax rgba(10, 8, 6, .65), var(--sombra);
+}
+dialog::backdrop { background: transparent; }
+dialog h2 { color: var(--madera); }
+dialog[open] { animation: aparecer .25s ease-out; }
+dialog .boton { min-width: 0; width: 100%; }
+#victoria h2 { color: #4c7a1f; }
+#derrota h2 { color: var(--brasa); }
+.acciones-modal { display: grid; gap: .7rem; margin-top: 1rem; }
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(12px) scale(.97); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---------- Diseño adaptable ---------- */
+@media (max-width: 800px) {
+  .escenario { grid-template-columns: 1fr; }
+  #panel-torres ul { grid-template-columns: repeat(3, 1fr); }
+  .boton-torre { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  .boton-torre .nombre kbd { display: none; }
+  .info-torre { min-height: 0; }
+  #hud { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  body { font-size: 1rem; }
+  .boton { width: 100%; }
+  .menu-botones { width: 100%; }
+  .menu-botones li { width: 100%; }
+
+}
+
+/* Respeta la preferencia de menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* ==========================================================
+   v2 · Selección de mapa, torres nuevas y tema infernal
+   ========================================================== */
+.rejilla-mapas {
+  list-style: none; margin: 0; padding: 0; width: 100%;
+  display: grid; gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.tarjeta-mapa {
+  height: 100%;
+  display: flex; flex-direction: column; gap: .45rem; align-items: stretch;
+  padding: 1rem 1rem 1.1rem;
+  background: linear-gradient(160deg, var(--piedra-700), var(--piedra-800));
+  border: 2px solid var(--piedra-500);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  transition: transform .2s ease, border-color .2s ease;
+}
+.tarjeta-mapa:hover { transform: translateY(-4px); border-color: var(--oro); }
+.tarjeta-infernal:hover { border-color: #ff7a1f; }
+.tarjeta-mapa h3 { margin: .3rem 0 0; font-size: 1.4rem; color: var(--oro-claro); }
+.tarjeta-infernal h3 { color: #ff9a55; }
+.tarjeta-mapa p { margin: 0; font-size: .95rem; color: var(--pergamino-osc); }
+.tarjeta-mapa .progreso-mapa { font-size: .85rem; color: var(--oro); letter-spacing: .04em; }
+.tarjeta-mapa .boton { margin-top: auto; width: 100%; min-width: 0; font-size: .9rem; }
+
+.vista-mapa {
+  position: relative; height: 130px; border-radius: 6px; border: 2px solid #0e0c0a; overflow: hidden;
+}
+.vista-mapa::before {            /* camino */
+  content: ""; position: absolute; left: -5%; right: -5%; top: 38%; height: 26%;
+  transform: skewY(-6deg);
+}
+.vista-mapa::after {             /* castillo */
+  content: ""; position: absolute; right: 6px; top: 26%; width: 22px; height: 46px;
+  background: #5b5147; border-top: 6px double #2c2620; box-shadow: 0 0 0 2px #14110e;
+}
+.vista-base {
+  background:
+    radial-gradient(circle at 20% 25%, #2a5a22 0 9px, transparent 10px),
+    radial-gradient(circle at 70% 78%, #2a5a22 0 11px, transparent 12px),
+    radial-gradient(circle at 45% 15%, #367a2c 0 7px, transparent 8px),
+    repeating-conic-gradient(#41602f 0 25%, #3b5929 0 50%) 0 0 / 26px 26px;
+}
+.vista-base::before { background: linear-gradient(90deg, #8a6a43, #94744b); box-shadow: 0 0 0 3px #5a4328; }
+.vista-infernal {
+  background:
+    radial-gradient(circle at 25% 70%, #ff6a1f 0 5px, transparent 9px),
+    radial-gradient(circle at 78% 22%, #ff6a1f 0 4px, transparent 8px),
+    repeating-conic-gradient(#7a1f14 0 25%, #6f1a11 0 50%) 0 0 / 26px 26px;
+}
+.vista-infernal::before { background: linear-gradient(90deg, #3a2d2b, #42332f); box-shadow: 0 0 0 3px #ff7a1f, 0 0 14px 4px rgba(255,122,31,.6); }
+
+/* Tema infernal en los niveles */
+body[data-mapa="infernal"] #niveles h2 { color: #ff9a55; text-shadow: 0 0 14px rgba(255,90,20,.55); }
+body[data-mapa="infernal"] .tarjeta-nivel:hover { border-color: #ff7a1f; }
+body[data-mapa="infernal"] .tarjeta-nivel .dificultad { color: #ff7a1f; }
+body[data-mapa="infernal"] .numero-nivel { color: rgba(255,90,20,.16); }
+
+/* Torres nuevas en el panel */
+.ico-dardero { background: #2fa58a; border-radius: 50%; outline: 2px solid #7be0a0; }
+.ico-lasser { background: #3fd0e8; clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%); box-shadow: 0 0 8px #6ff0ff; }
+.ico-vender {
+  position: relative; background: transparent;
+}
+.ico-vender::before, .ico-vender::after {
+  content: ""; position: absolute; left: 10px; top: 1px; width: 4px; height: 22px; background: #e0704f; border-radius: 2px;
+}
+.ico-vender::before { transform: rotate(45deg); }
+.ico-vender::after { transform: rotate(-45deg); }
+.boton-vender { border-style: dashed; }
+.boton-vender[aria-pressed="true"] { border-color: #e0704f; background: #3a1a12; box-shadow: 0 0 0 2px #c0452b inset; }
+.boton-torre .costo.sin-moneda::before { content: ""; }
+.boton-torre .costo.sin-moneda { color: #e0a88f; font-size: .85rem; }
+
+#hud .valor { white-space: nowrap; }
+
+/* ==========================================================
+   v3 · Interfaz renovada, pestañas, mejoras y dificultad
+   ========================================================== */
+
+/* ---------- Botones con destello ---------- */
+.boton { position: relative; overflow: hidden; }
+.boton::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.3), transparent);
+  transform: skewX(-20deg); transition: left .55s ease; pointer-events: none;
+}
+.boton:hover:not(:disabled)::after { left: 130%; }
+
+/* ---------- Menú ---------- */
+#titulo-juego { text-shadow: 0 3px 0 var(--madera), 0 0 28px rgba(217,169,60,.35), 0 6px 18px rgba(0,0,0,.7); }
+.menu-botones .boton { min-width: 15rem; }
+h2 { position: relative; }
+h2::after {
+  content: ""; display: block; width: 90px; height: 3px; margin: .5rem auto 0;
+  background: linear-gradient(90deg, transparent, var(--oro), transparent);
+}
+.pantalla > header { width: 100%; }
+
+/* ---------- Tarjetas de misión ---------- */
+.tarjeta-nivel .oleadas-badge {
+  display: inline-block; padding: .1rem .65rem; border-radius: 999px;
+  font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--tinta); background: linear-gradient(180deg, var(--oro-claro), var(--oro));
+}
+.tarjeta-nivel { border-top: 4px solid var(--oro); }
+.tarjeta-nivel.bloqueada { border-top-color: var(--piedra-500); }
+body[data-mapa="infernal"] .tarjeta-nivel { border-top-color: #ff7a1f; }
+
+/* ---------- Selector de dificultad (pantalla de mapas) ---------- */
+.dificultad-sel {
+  width: min(560px, 100%); margin: 0; padding: .6rem 1rem 1rem; text-align: center;
+  background: linear-gradient(160deg, var(--piedra-700), var(--piedra-800));
+  border: 2px solid var(--piedra-500); border-radius: var(--radio); box-shadow: var(--sombra);
+}
+.dificultad-sel legend {
+  padding: 0 .75rem; font-family: var(--fuente-titulo); font-weight: 700;
+  text-transform: uppercase; letter-spacing: .12em; font-size: .9rem; color: var(--oro);
+}
+.segmentos { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+.segmentos input { position: absolute; opacity: 0; pointer-events: none; }
+.segmentos label {
+  display: flex; flex-direction: column; gap: .1rem; padding: .55rem .4rem; cursor: pointer;
+  border: 2px solid var(--piedra-500); border-radius: 8px; background: var(--piedra-900);
+  transition: border-color .15s ease, background .15s ease, transform .15s ease;
+}
+.segmentos label span { font-family: var(--fuente-titulo); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.segmentos label small { font-size: .75rem; color: var(--pergamino-osc); }
+.segmentos label:hover { border-color: var(--oro); transform: translateY(-2px); }
+.segmentos input:checked + label {
+  border-color: var(--oro-claro); background: linear-gradient(180deg, #4a3817, #2f2410);
+  box-shadow: 0 0 0 2px var(--oro) inset, 0 0 14px rgba(217,169,60,.3); color: var(--oro-claro);
+}
+.segmentos input:focus-visible + label { outline: 3px solid var(--oro-claro); outline-offset: 3px; }
+
+/* ---------- Partida: todo cabe en pantalla, sin bajar con la rueda ---------- */
+body:has(#partida:not([hidden])) #app { max-width: 1320px; padding: .5rem .75rem; }
+.pantalla-juego { gap: .6rem; }
+
+#hud {
+  align-items: center; justify-content: flex-start; gap: .45rem .6rem; padding: .45rem .6rem;
+  background: linear-gradient(180deg, #2f2923, var(--piedra-800));
+  box-shadow: var(--sombra), inset 0 1px 0 rgba(255,255,255,.07);
+}
+#hud .dato {
+  padding: .3rem .8rem; border-radius: 999px; gap: .5rem;
+  background: rgba(0,0,0,.32); border: 1px solid rgba(255,255,255,.08);
+}
+#hud .dato-mapa { gap: .3rem; }
+#txt-monedas { color: var(--oro-claro); font-size: 1.1rem; }
+meter, progress { width: 84px; }
+#hud .acciones { display: flex; gap: .5rem; margin-left: auto; }
+#hud .acciones .boton { min-width: 0; min-height: 2.5rem; padding: .35rem 1.1rem; font-size: .88rem; }
+
+.escenario { grid-template-columns: minmax(0, 1fr) 290px; gap: .75rem; align-items: start; }
+
+.lienzo { position: relative; width: min(100%, calc((100vh - 112px) * 1.7778)); margin-inline: auto; }
+.lienzo #juego { width: 100%; }
+.mensaje {
+  position: absolute; left: .6rem; right: .6rem; bottom: .6rem; margin: 0; min-height: 0;
+  padding: .35rem .75rem; font-size: .88rem; font-style: normal; text-align: center;
+  background: rgba(14,12,10,.8); border: 1px solid rgba(217,169,60,.45); border-radius: 6px;
+  pointer-events: none;
+}
+.mensaje:empty { display: none; }
+
+#panel-torres {
+  display: flex; flex-direction: column; gap: .6rem; padding: .6rem;
+  max-height: calc(100vh - 112px); overflow-y: auto;
+  box-shadow: var(--sombra), inset 0 1px 0 rgba(255,255,255,.07);
+}
+.pestanas {
+  display: grid; grid-template-columns: 1fr 1fr; gap: .25rem; padding: .25rem;
+  background: #0e0c0a; border-radius: 8px;
+}
+.pestanas button {
+  min-height: 2.4rem; border: 0; border-radius: 6px; cursor: pointer;
+  font-family: var(--fuente-titulo); font-weight: 700; font-size: .85rem;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--pergamino-osc); background: transparent;
+  transition: background .15s ease, color .15s ease;
+}
+.pestanas button:hover { color: var(--oro-claro); }
+.pestanas button[aria-selected="true"] {
+  color: var(--tinta); background: linear-gradient(180deg, var(--oro-claro), var(--oro));
+  box-shadow: 0 2px 6px rgba(0,0,0,.5);
+}
+[role="tabpanel"][hidden] { display: none; }
+.lista-panel { list-style: none; margin: 0; padding: 0; display: grid; gap: .4rem; }
+
+.boton-torre { min-height: 2.7rem; padding: .3rem .6rem; }
+.boton-torre .nombre { font-weight: 700; }
+.boton-torre .nombre kbd { margin-left: .25rem; opacity: .75; }
+
+.boton-mejora {
+  width: 100%; display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: .6rem;
+  padding: .55rem .65rem; text-align: left; font: inherit; color: var(--texto); cursor: pointer;
+  background: linear-gradient(160deg, #2b2418, var(--piedra-900));
+  border: 2px solid var(--piedra-500); border-radius: 8px;
+  transition: border-color .15s ease, transform .15s ease;
+}
+.boton-mejora:hover:not(:disabled) { border-color: var(--oro); transform: translateY(-2px); }
+.boton-mejora:disabled { opacity: .5; cursor: not-allowed; }
+.boton-mejora .ico-m {
+  display: grid; place-items: center; width: 34px; height: 34px; font-size: 1.15rem;
+  color: var(--oro-claro); background: rgba(217,169,60,.12); border: 1px solid var(--oro); border-radius: 50%;
+}
+.boton-mejora .texto { display: flex; flex-direction: column; line-height: 1.25; }
+.boton-mejora small { color: var(--pergamino-osc); font-size: .78rem; }
+.boton-mejora .costo { font-weight: 700; color: var(--oro-claro); white-space: nowrap; }
+.boton-mejora .costo::before { content: "● "; font-size: .7em; }
+.boton-mejora.comprada { opacity: 1; border-color: #7ac142; background: linear-gradient(160deg, #1f3318, var(--piedra-900)); }
+.boton-mejora.comprada .costo { color: #9be062; }
+.boton-mejora.comprada .costo::before { content: ""; }
+.boton-mejora.comprada .ico-m { color: #9be062; border-color: #7ac142; background: rgba(122,193,66,.14); }
+.nota-mejoras { margin: .6rem 0 0; font-size: .8rem; color: var(--pergamino-osc); }
+
+.info-torre { margin: 0; min-height: 0; padding: .5rem .6rem; background: rgba(0,0,0,.28); border-radius: 6px; }
+
+/* ---------- Adaptable ---------- */
+@media (max-width: 900px) {
+  .escenario { grid-template-columns: 1fr; }
+  .lienzo { width: 100%; }
+  #panel-torres { max-height: none; overflow: visible; }
+  #panel-torres .lista-panel { grid-template-columns: repeat(3, 1fr); }
+  #vista-mejoras .lista-panel { grid-template-columns: 1fr; }
+  .boton-torre { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  .boton-torre .ico { display: none; }
+  .boton-torre .nombre kbd { display: none; }
+  #hud .acciones { margin-left: 0; width: 100%; }
+  #hud .acciones .boton { flex: 1; }
+}
+@media (max-width: 480px) {
+  .segmentos label small { display: none; }
+  #hud .acciones .boton { width: auto; }
+}
+
+/* ==========================================================
+   v4 · Lobby rediseñado, mapas/misiones responsive, extras
+   ========================================================== */
+:root { --glow: 0 0 22px rgba(242, 207, 114, .35); }
+
+/* ---------- Fondo vivo (luciérnagas / brasas) ---------- */
+body {
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(217,169,60,.22), transparent 70%),
+    radial-gradient(ellipse at 50% 120%, #4a2412 0%, transparent 60%),
+    linear-gradient(180deg, #0d0b14 0%, #1a1420 45%, #1e1a16 100%);
+  background-attachment: fixed;
+}
+body[data-mapa="infernal"] {
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 110%, rgba(255,90,20,.35), transparent 70%),
+    linear-gradient(180deg, #14070a 0%, #2a0d0c 60%, #1e1a16 100%);
+  background-attachment: fixed;
+}
+#ambiente { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+#ambiente span {
+  position: absolute; bottom: -12px; width: var(--t, 3px); height: var(--t, 3px); border-radius: 50%;
+  background: var(--oro-claro); box-shadow: 0 0 8px 2px rgba(242,207,114,.7);
+  animation: subir 12s linear infinite; opacity: 0;
+}
+body[data-mapa="infernal"] #ambiente span { background: #ff8a3a; box-shadow: 0 0 8px 2px rgba(255,110,30,.8); }
+@keyframes subir {
+  0% { transform: translate(0, 0); opacity: 0; }
+  10% { opacity: .9; }
+  100% { transform: translate(40px, -105vh); opacity: 0; }
+}
+#app { position: relative; z-index: 1; }
+
+/* ---------- Lobby ---------- */
+#menu { min-height: calc(100dvh - 3.5rem); justify-content: center; gap: 1.6rem; }
+.cabecera-menu { padding-top: 0; }
+.castillo { width: min(380px, 72vw); color: #2b2233; animation: flotar 5s ease-in-out infinite; filter: drop-shadow(0 0 22px rgba(217,169,60,.45)); }
+@keyframes flotar { 50% { transform: translateY(-6px); } }
+.sobretitulo { font-size: clamp(.7rem, 2.4vw, .9rem); letter-spacing: .4em; }
+#titulo-juego {
+  font-size: clamp(2.4rem, 11vw, 5.6rem);
+  background: linear-gradient(180deg, #fff3c2 0%, var(--oro-claro) 45%, #b9801f 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  text-shadow: none; filter: drop-shadow(0 4px 0 #3a2410) drop-shadow(0 0 26px rgba(217,169,60,.45));
+  letter-spacing: .06em; overflow-wrap: anywhere;
+}
+.lema { max-width: 32rem; margin-inline: auto; padding-inline: .5rem; }
+.chips-menu { list-style: none; margin: 1rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; justify-content: center; }
+.chips-menu li {
+  font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; padding: .2rem .7rem; border-radius: 999px;
+  color: var(--oro-claro); background: rgba(217,169,60,.1); border: 1px solid rgba(217,169,60,.4);
+}
+.menu-botones { width: min(340px, 100%); gap: .8rem; }
+.menu-botones li { width: 100%; }
+.menu-botones .boton { width: 100%; display: flex; align-items: center; justify-content: center; gap: .6rem; min-height: 3.2rem; }
+.boton .ib { font-size: 1.15em; filter: drop-shadow(0 1px 0 rgba(0,0,0,.4)); }
+.boton-gigante { min-height: 3.9rem !important; font-size: 1.35rem; animation: latido 2.4s ease-in-out infinite; }
+@keyframes latido { 50% { box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 3px 0 #7a5410, 0 0 28px rgba(242,207,114,.6), var(--sombra); } }
+.boton { border-radius: 12px; }
+.pie { margin-top: .5rem; font-size: .72rem; }
+
+/* ---------- Selección de mapa ---------- */
+.pantalla > header h2 { margin-bottom: 0; }
+.rejilla-mapas { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1.25rem; max-width: 900px; }
+.tarjeta-mapa { padding: .8rem .8rem 1.1rem; border-radius: 16px; gap: .5rem; position: relative; }
+.tarjeta-mapa:hover { box-shadow: var(--sombra), 0 0 28px rgba(242,207,114,.25); }
+.tarjeta-infernal:hover { box-shadow: var(--sombra), 0 0 30px rgba(255,100,20,.4); }
+.tarjeta-mapa h3 { font-size: clamp(1.2rem, 4vw, 1.6rem); padding-inline: .3rem; }
+.tarjeta-mapa p { padding-inline: .3rem; }
+.vista-mapa { height: clamp(120px, 26vw, 170px); border-radius: 10px; }
+.etq-mapa {
+  position: absolute; left: 8px; top: 8px; z-index: 2; font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  padding: .15rem .6rem; border-radius: 999px; background: rgba(14,12,10,.8); color: var(--oro-claro); border: 1px solid rgba(217,169,60,.5);
+}
+.etq-dura { color: #ffb070; border-color: rgba(255,120,40,.7); }
+.estrellas-mapa { color: var(--oro-claro); font-weight: 700; margin-left: .4rem; }
+.dificultad-sel { border-radius: 16px; }
+.segmentos label { text-align: center; align-items: center; border-radius: 12px; }
+
+/* ---------- Misiones ---------- */
+.rejilla-niveles { grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); max-width: 1000px; }
+.tarjeta-nivel { border-radius: 16px; }
+.tarjeta-nivel:hover { box-shadow: var(--sombra), 0 0 24px rgba(242,207,114,.25); }
+.estrellas-nivel { color: var(--oro-claro) !important; letter-spacing: .25em; font-size: 1.15rem !important; }
+.tarjeta-nivel.bloqueada .estrellas-nivel { opacity: .35; }
+
+/* ---------- Partida ---------- */
+#hud .acciones { flex-wrap: wrap; }
+#btn-vel { min-width: 4.6rem !important; }
+.boton-torre, .boton-mejora { border-radius: 10px; }
+.ico-mago, .ico-catapulta, .ico-arquero, .ico-dardero, .ico-lasser { flex: none; }
+
+/* ---------- Diálogos ---------- */
+.estrellas-grandes { margin: 0 0 .4rem; font-size: 2.4rem; letter-spacing: .15em; color: #c98a10; text-shadow: 0 2px 0 #7a5410, 0 0 18px rgba(242,207,114,.8); animation: aparecer .6s ease-out; }
+dialog { border-radius: 16px; max-height: 92dvh; overflow-y: auto; }
+.btn-compartir { background: linear-gradient(180deg, #4b8fd6, #2a5f9e) !important; border-color: #153a66 !important; box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 3px 0 #153a66, var(--sombra) !important; color: #fff !important; }
+
+/* ---------- Responsive extra ---------- */
+@media (max-width: 900px) {
+  #app { padding-inline: .6rem; }
+  #hud { gap: .35rem; }
+  #hud .dato { padding: .25rem .6rem; }
+  #hud .dato-mapa { display: none; }
+  #hud .acciones { width: 100%; margin-left: 0; display: grid; grid-template-columns: 2fr 1fr 1fr; }
+  #hud .acciones .boton { width: 100%; padding-inline: .4rem; }
+  #panel-torres .lista-panel { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 600px) {
+  #menu { min-height: calc(100dvh - 2rem); gap: 1.1rem; }
+  .castillo { width: 62vw; }
+  meter, progress { width: 64px; }
+  .pantalla { gap: 1rem; }
+  .tarjeta-nivel .numero-nivel { font-size: 3.4rem; }
+  .pergamino { padding: 1rem 1.1rem; }
+  .boton { min-width: 0; }
+  .segmentos { gap: .35rem; }
+  .segmentos label { padding: .5rem .2rem; font-size: .85rem; }
+  .estrellas-grandes { font-size: 2rem; }
+}
+@media (max-height: 520px) and (orientation: landscape) {
+  #menu { flex-direction: row; flex-wrap: wrap; align-content: center; justify-content: center; gap: 1rem 2.5rem; }
+  .castillo { width: 160px; }
+  .lema, .chips-menu, .pie { display: none; }
+  .menu-botones { grid-template-columns: 1fr 1fr; width: min(460px, 100%); }
+}
+@media (hover: none) {
+  .boton:hover, .tarjeta-mapa:hover, .tarjeta-nivel:hover { transform: none; }
+}
+
+/* ==========================================================
+   v4.1 · Todo cabe en pantalla (sin scroll) + diálogos seguros
+   ========================================================== */
+dialog { box-shadow: var(--sombra); }
+dialog::backdrop { background: rgba(10, 8, 6, .7); }
+
+#app { min-height: 100dvh; display: flex; flex-direction: column; justify-content: center; padding-block: .5rem; }
+#contenido { width: 100%; }
+.pantalla:not(.pantalla-juego) {
+  min-height: 0; max-height: calc(100dvh - 1rem); justify-content: center;
+  gap: clamp(.35rem, 1.6vh, 1.1rem);
+}
+.pantalla:not(.pantalla-juego) .boton { min-height: clamp(2.2rem, 6vh, 3rem); }
+h2 { font-size: clamp(1.2rem, 4vh, 2.1rem); margin-bottom: .1em; }
+h2::after { margin-top: .2rem; }
+
+#menu { min-height: 0; gap: clamp(.4rem, 2vh, 1.5rem); }
+.cabecera-menu { padding: 0; }
+.castillo { width: auto; height: clamp(50px, 15vh, 150px); max-width: 55vw; }
+#titulo-juego { font-size: clamp(1.9rem, min(10vw, 8vh), 5rem); margin-bottom: .1em; }
+.lema { font-size: clamp(.75rem, 1.9vh, 1.05rem); }
+.chips-menu { margin-top: clamp(.2rem, 1vh, 1rem); }
+.menu-botones { gap: clamp(.35rem, 1.3vh, .8rem); }
+.boton-gigante { min-height: clamp(2.6rem, 7.5vh, 3.9rem) !important; font-size: clamp(1rem, 2.8vh, 1.35rem); }
+.pie { margin-top: 0; }
+
+.rejilla-mapas { grid-template-columns: 1fr 1fr; gap: clamp(.5rem, 2vw, 1.25rem); }
+.tarjeta-mapa { padding: clamp(.4rem, 1.4vh, .8rem); gap: clamp(.15rem, .7vh, .5rem); }
+.tarjeta-mapa h3 { font-size: clamp(.9rem, 2.6vh, 1.5rem); margin: .1rem 0 0; padding-inline: .1rem; }
+.tarjeta-mapa p { font-size: clamp(.7rem, 1.8vh, .95rem); line-height: 1.3; padding-inline: .1rem; }
+.tarjeta-mapa .boton { font-size: clamp(.65rem, 1.8vh, .9rem); padding: .3rem .4rem; letter-spacing: .02em; }
+.vista-mapa { height: clamp(50px, 15vh, 150px); }
+.etq-mapa { font-size: clamp(.5rem, 1.5vh, .7rem); padding: .1rem .45rem; }
+.dificultad-sel { padding: .1rem .6rem .5rem; }
+.dificultad-sel legend { font-size: clamp(.65rem, 1.7vh, .9rem); }
+.segmentos label { padding: clamp(.2rem, .9vh, .55rem) .2rem; }
+.segmentos label small { font-size: clamp(.55rem, 1.4vh, .75rem); }
+
+.rejilla-niveles { grid-template-columns: repeat(4, 1fr); gap: clamp(.4rem, 1.5vw, 1rem); }
+.tarjeta-nivel { padding: clamp(.4rem, 1.4vh, 1.1rem) clamp(.5rem, 1.2vw, 1rem); gap: clamp(.1rem, .6vh, .35rem); }
+.tarjeta-nivel h3 { font-size: clamp(.85rem, 2.4vh, 1.15rem); margin: 0; }
+.tarjeta-nivel p { font-size: clamp(.65rem, 1.7vh, .92rem); line-height: 1.3; }
+.estrellas-nivel { font-size: clamp(.85rem, 2.2vh, 1.15rem) !important; }
+.numero-nivel { font-size: clamp(2rem, 8vh, 4.5rem); }
+.tarjeta-nivel .boton { font-size: clamp(.65rem, 1.8vh, .9rem); padding: .3rem .4rem; letter-spacing: .02em; }
+
+.pergamino { max-height: calc(100dvh - 8rem); overflow-y: auto; font-size: clamp(.8rem, 2.1vh, 1.02rem); }
+
+@media (max-width: 760px) {
+  .rejilla-niveles { grid-template-columns: 1fr 1fr; }
+  .rejilla-niveles .tarjeta-nivel p:not(.dificultad):not(.estrellas-nivel):not(.oleadas-badge) { display: none; }
+  .rejilla-mapas .tarjeta-mapa p:not(.progreso-mapa) { display: none; }
+  .tarjeta-mapa .progreso-mapa { font-size: .68rem; }
+  .estrellas-mapa { display: block; margin-left: 0; }
+}
+@media (max-height: 700px) {
+  .rejilla-niveles .tarjeta-nivel p:not(.dificultad):not(.estrellas-nivel):not(.oleadas-badge) { display: none; }
+  .rejilla-mapas .tarjeta-mapa p:not(.progreso-mapa) { display: none; }
+  .chips-menu, .pie { display: none; }
+}
+@media (max-height: 520px) and (orientation: landscape) {
+  #menu { flex-direction: row; flex-wrap: wrap; }
+  .castillo { height: 80px; }
+  .menu-botones { grid-template-columns: 1fr 1fr; width: min(460px, 100%); }
+  .vista-mapa { display: none; }
+  .tarjeta-nivel .numero-nivel { display: none; }
+}
+.etq-mapa { white-space: nowrap; }
+.tarjeta-nivel .dificultad { letter-spacing: .05em !important; font-size: clamp(.65rem, 1.7vh, .85rem) !important; }
+@media (max-height: 520px) {
+  h2 { font-size: 1.05rem; margin: 0; }
+  h2::after { display: none; }
+  .pantalla:not(.pantalla-juego) { gap: .3rem; }
+}
+@media (max-height: 520px) and (min-width: 600px) {
+  .rejilla-niveles { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ---------- Partida en celular ---------- */
+@media (max-width: 600px) {
+  .mensaje { font-size: .66rem; padding: .2rem .45rem; left: .3rem; right: .3rem; bottom: .3rem; line-height: 1.25; }
+}
+@media (orientation: landscape) and (max-height: 520px) {
+  body:has(#partida:not([hidden])) #app { padding: .25rem .4rem; justify-content: flex-start; }
+  .pantalla-juego { gap: .3rem; }
+  #hud { padding: .2rem .4rem; gap: .25rem; flex-wrap: nowrap; overflow: hidden; }
+  #hud .dato { padding: .1rem .5rem; font-size: .8rem; white-space: nowrap; }
+  #hud .dato label, #hud .etiqueta { font-size: .65rem; }
+  meter, progress { width: 46px; height: 10px; }
+  #hud .acciones { width: auto; margin-left: auto; display: flex; flex-wrap: nowrap; gap: .25rem; }
+  #hud .acciones .boton { min-height: 1.9rem; font-size: .68rem; padding: .15rem .5rem; width: auto; }
+  .escenario { grid-template-columns: minmax(0, 1fr) 190px; gap: .4rem; }
+  .lienzo { width: min(100%, calc((100dvh - 56px) * 1.7778)); }
+  #panel-torres { max-height: calc(100dvh - 56px); overflow-y: auto; padding: .35rem; gap: .35rem; }
+  #panel-torres .lista-panel { grid-template-columns: 1fr 1fr; gap: .25rem; }
+  .boton-torre { min-height: 2.1rem; padding: .15rem; font-size: .72rem; }
+  .boton-torre .costo { font-size: .7rem; }
+  .info-torre { font-size: .65rem; padding: .25rem .35rem; }
+  .pestanas button { min-height: 1.8rem; font-size: .7rem; }
+  .mensaje { font-size: .62rem; }
+}

@@ -1,27 +1,284 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Cargando...</title>
-
-    <!-- Redirección automática después de 2 segundos -->
-    <meta http-equiv="refresh" content="2; url=menu/home.html">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="monster_days: videojuego 2D tower defense de estilo medieval.">
+  <title>monster_days – Tower Defense</title>
+  <link rel="stylesheet" href="css/estilos.css">
 </head>
-
 <body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
 
-    <h1>Cargando...</h1>
-    <p>Espera un momento...</p>
+  <div id="ambiente" aria-hidden="true"></div>
+  <div id="app">
+    <main id="contenido">
 
-    <script>
-        setTimeout(function() {
-            window.location.href = "menu/home.html";
-        }, 2000);
-    </script>
+      <!-- ===== MENÚ PRINCIPAL ===== -->
+      <section id="menu" class="pantalla" aria-labelledby="titulo-juego">
+        <header class="cabecera-menu">
+          <svg class="castillo" viewBox="0 0 320 120" role="img" aria-label="Silueta de un castillo medieval">
+            <g fill="currentColor">
+              <rect x="20" y="50" width="50" height="70"/>
+              <polygon points="20,50 20,36 30,36 30,42 38,42 38,36 46,36 46,42 54,42 54,36 70,36 70,50"/>
+              <rect x="125" y="20" width="70" height="100"/>
+              <polygon points="125,20 125,6 137,6 137,14 148,14 148,6 160,6 160,14 172,14 172,6 183,6 183,14 195,14 195,20"/>
+              <rect x="250" y="50" width="50" height="70"/>
+              <polygon points="250,50 250,36 260,36 260,42 268,42 268,36 276,36 276,42 284,42 284,36 300,36 300,50"/>
+              <rect x="70" y="80" width="55" height="40"/>
+              <rect x="195" y="80" width="55" height="40"/>
+            </g>
+            <path d="M145 120 v-24 a15 15 0 0 1 30 0 v24z" fill="#14110e"/>
+          </svg>
+          <p class="sobretitulo">Defiende el reino</p>
+          <h1 id="titulo-juego">monster_days</h1>
+          <p class="lema">Las oleadas se acercan. Levanta tus torres antes del anochecer.</p>
+          <ul class="chips-menu" aria-label="Características"><li>5 torres</li><li>2 mapas</li><li>8 misiones</li><li>Jefes épicos</li></ul>
+        </header>
+        <nav aria-label="Menú principal">
+          <ul class="menu-botones">
+            <li><button class="boton boton-primario boton-gigante" data-ir="mapas"><span class="ib" aria-hidden="true">⚔</span>Jugar</button></li>
+            <li><button class="boton" data-ir="instrucciones"><span class="ib" aria-hidden="true">📜</span>Instrucciones</button></li>
+            <li><button class="boton" data-ir="opciones"><span class="ib" aria-hidden="true">⚙</span>Opciones</button></li>
+            <li><button class="boton boton-sutil" id="btn-salir"><span class="ib" aria-hidden="true">🚪</span>Salir</button></li>
+          </ul>
+        </nav>
+        <footer class="pie">
+          <p>monster_days · Proyecto formativo SENA · Análisis y Desarrollo de Software · Ficha 3336217</p>
+        </footer>
+      </section>
 
+      <!-- ===== INSTRUCCIONES ===== -->
+      <section id="instrucciones" class="pantalla" aria-labelledby="titulo-instr" hidden>
+        <header><h2 id="titulo-instr">Instrucciones</h2></header>
+        <article class="pergamino">
+          <ol class="pasos">
+            <li>Elige un <strong>mapa</strong> (Base o Infernal) y, debajo, la <strong>dificultad</strong>. Cada mapa tiene <strong>4 misiones</strong>; cada victoria desbloquea la siguiente.</li>
+            <li>Las misiones duran <strong>5, 10, 15 y 25 oleadas</strong>. Cada 5 oleadas llega un <strong>minijefe</strong> y en la última oleada aparece el <strong>jefe final</strong>.</li>
+            <li>Selecciona una torreta en la pestaña <strong>Torretas</strong> (o con las teclas <kbd>1</kbd> a <kbd>5</kbd>) y haz clic en una casilla libre del mapa.</li>
+            <li>En la pestaña <strong>Mejoras</strong> compras bonos para todas tus torretas: velocidad de ataque, daño y crítico.</li>
+            <li>Para quitar una torreta elige <strong>Eliminar</strong> (tecla <kbd>6</kbd>): recuperas el <strong>30 %</strong> de su costo.</li>
+            <li>Pulsa <strong>Iniciar oleada</strong>. Si un monstruo llega al final, tu fortaleza pierde vida; si llega a cero pierdes. <strong>Si el jefe final llega a la fortaleza, pierdes al instante</strong>. Gana estrellas según la vida que te quede.</li>
+            <li>¡Cuidado con el jefe final! Tras caminar cierta distancia lanza un ataque que <strong>duerme 3 torretas</strong> cercanas.</li>
+            <li>Usa <strong>⏩</strong> para acelerar el juego (x1, x2, x3) y <strong>Compartir</strong> para retar a tus amigos.</li>
+            <li>Pulsa <kbd>Esc</kbd> o el botón de pausa para detener la partida.</li>
+          </ol>
+          <h3>Torres</h3>
+          <ul class="leyenda-torres">
+            <li><strong>Arquero (45):</strong> disparo rápido, daño bajo y alcance corto.</li>
+            <li><strong>Dardero (60):</strong> poco daño, pero su veneno sigue dañando al enemigo durante unos segundos.</li>
+            <li><strong>Mago (80):</strong> hechizo de buen daño que ralentiza a los enemigos.</li>
+            <li><strong>Catapulta (100):</strong> gran daño en área y largo alcance, pero lenta.</li>
+            <li><strong>Lasser (200):</strong> 2 bolitas de energía devastadoras y el mayor alcance. Cuanto más cara la torre, más fuerte pega y más lejos llega.</li>
+            <li><strong>Eliminar:</strong> quita una torreta y te devuelve el 30 % de su costo.</li>
+          </ul>
+          <h3>Mejoras</h3>
+          <ul class="leyenda-torres">
+            <li><strong>Velocidad de ataque (300):</strong> +50 % de velocidad de ataque.</li>
+            <li><strong>Daño (300):</strong> +50 % de daño.</li>
+            <li><strong>Crítico (250):</strong> 25 % de probabilidad de que un ataque haga el doble de daño.</li>
+          </ul>
+        </article>
+        <button class="boton" data-ir="menu">Volver</button>
+      </section>
+
+      <!-- ===== SELECCIÓN DE MAPA ===== -->
+      <section id="mapas" class="pantalla" aria-labelledby="titulo-mapas" hidden>
+        <header><h2 id="titulo-mapas">Elige tu mapa</h2></header>
+        <ul class="rejilla-mapas">
+          <li>
+            <article class="tarjeta-mapa tarjeta-base">
+              <div class="vista-mapa vista-base" aria-hidden="true"><span class="etq-mapa">Normal</span></div>
+              <h3>Mapa Base</h3>
+              <p>Praderas y bosques. Las 4 misiones clásicas del reino.</p>
+              <p class="progreso-mapa"><span id="prog-base"></span> <span class="estrellas-mapa" id="est-base"></span></p>
+              <button class="boton boton-primario" data-mapa="base">Entrar al Mapa Base</button>
+            </article>
+          </li>
+          <li>
+            <article class="tarjeta-mapa tarjeta-infernal">
+              <div class="vista-mapa vista-infernal" aria-hidden="true"><span class="etq-mapa etq-dura">🔥 +20 % vida</span></div>
+              <h3>Mapa Infernal</h3>
+              <p>Suelo ardiente y ríos de lava. Las mismas 4 misiones, pero con monstruos más resistentes.</p>
+              <p class="progreso-mapa"><span id="prog-infernal"></span> <span class="estrellas-mapa" id="est-infernal"></span></p>
+              <button class="boton boton-primario" data-mapa="infernal">Entrar al Mapa Infernal</button>
+            </article>
+          </li>
+        </ul>
+        <fieldset class="dificultad-sel">
+          <legend>Dificultad</legend>
+          <div class="segmentos">
+            <input type="radio" name="dificultad" id="dif-facil" value="0.8"><label for="dif-facil"><span>Fácil</span><small>Monstruos −20 %</small></label>
+            <input type="radio" name="dificultad" id="dif-normal" value="1" checked><label for="dif-normal"><span>Normal</span><small>Equilibrada</small></label>
+            <input type="radio" name="dificultad" id="dif-dificil" value="1.3"><label for="dif-dificil"><span>Difícil</span><small>Monstruos +30 %</small></label>
+          </div>
+        </fieldset>
+        <button class="boton" data-ir="menu">Volver</button>
+      </section>
+
+      <!-- ===== SELECCIÓN DE NIVEL ===== -->
+      <section id="niveles" class="pantalla" aria-labelledby="titulo-niveles" hidden>
+        <header><h2 id="titulo-niveles">Elige tu misión</h2></header>
+        <ul class="rejilla-niveles">
+          <li>
+            <article class="tarjeta-nivel">
+              <span class="numero-nivel" aria-hidden="true">I</span>
+              <h3>Camino del Bosque</h3>
+              <p class="dificultad" aria-label="Dificultad 1 de 4">Dificultad 🔥</p>
+              <p class="estrellas-nivel" aria-label="Estrellas ganadas">☆☆☆</p>
+              <p class="oleadas-badge">5 oleadas</p>
+              <p>Un sendero sencillo para aprender. Termina con el jefe final.</p>
+              <button class="boton boton-primario" data-nivel="1">Jugar misión 1</button>
+            </article>
+          </li>
+          <li>
+            <article class="tarjeta-nivel">
+              <span class="numero-nivel" aria-hidden="true">II</span>
+              <h3>Puente del Troll</h3>
+              <p class="dificultad" aria-label="Dificultad 2 de 4">Dificultad 🔥🔥</p>
+              <p class="estrellas-nivel" aria-label="Estrellas ganadas">☆☆☆</p>
+              <p class="oleadas-badge">10 oleadas</p>
+              <p>Más curvas y más orcos. Minijefe en la oleada 5.</p>
+              <button class="boton boton-primario" data-nivel="2">Jugar misión 2</button>
+            </article>
+          </li>
+          <li>
+            <article class="tarjeta-nivel">
+              <span class="numero-nivel" aria-hidden="true">III</span>
+              <h3>Desfiladero Sombrío</h3>
+              <p class="dificultad" aria-label="Dificultad 3 de 4">Dificultad 🔥🔥🔥</p>
+              <p class="estrellas-nivel" aria-label="Estrellas ganadas">☆☆☆</p>
+              <p class="oleadas-badge">15 oleadas</p>
+              <p>Los trolls aparecen con fuerza. Minijefes en las oleadas 5 y 10.</p>
+              <button class="boton boton-primario" data-nivel="3">Jugar misión 3</button>
+            </article>
+          </li>
+          <li>
+            <article class="tarjeta-nivel">
+              <span class="numero-nivel" aria-hidden="true">IV</span>
+              <h3>Fortaleza Maldita</h3>
+              <p class="dificultad" aria-label="Dificultad 4 de 4">Dificultad 🔥🔥🔥🔥</p>
+              <p class="estrellas-nivel" aria-label="Estrellas ganadas">☆☆☆</p>
+              <p class="oleadas-badge">25 oleadas</p>
+              <p>La batalla final del reino. Minijefes cada 5 oleadas y jefe final.</p>
+              <button class="boton boton-primario" data-nivel="4">Jugar misión 4</button>
+            </article>
+          </li>
+        </ul>
+        <button class="boton" data-ir="mapas">Volver</button>
+      </section>
+
+      <!-- ===== OPCIONES ===== -->
+      <section id="opciones" class="pantalla" aria-labelledby="titulo-opciones" hidden>
+        <header><h2 id="titulo-opciones">Opciones</h2></header>
+        <form class="pergamino formulario" onsubmit="return false">
+          <div class="campo">
+            <label for="opt-volumen">Volumen: <output id="out-volumen" for="opt-volumen">50</output>%</label>
+            <input type="range" id="opt-volumen" min="0" max="100" value="50">
+          </div>
+          <div class="campo campo-check">
+            <input type="checkbox" id="opt-sonido" checked>
+            <label for="opt-sonido">Activar sonidos</label>
+          </div>
+        </form>
+        <button class="boton" data-ir="menu">Volver</button>
+      </section>
+
+      <!-- ===== PARTIDA ===== -->
+      <section id="partida" class="pantalla pantalla-juego" aria-labelledby="titulo-partida" hidden>
+        <h2 id="titulo-partida" class="solo-lectores">Partida</h2>
+        <header id="hud" aria-label="Estado de la partida">
+          <div class="dato">
+            <label for="meter-vida">Fortaleza</label>
+            <meter id="meter-vida" min="0" max="20" low="7" high="14" optimum="20" value="20">20</meter>
+            <span id="txt-vida">20</span>
+          </div>
+          <div class="dato"><span class="etiqueta">Monedas</span> <span id="txt-monedas" class="valor">0</span></div>
+          <div class="dato">
+            <label for="prog-oleada">Oleada</label>
+            <progress id="prog-oleada" max="5" value="0">0</progress>
+            <span id="txt-oleada">0/5</span>
+          </div>
+          <div class="dato dato-mapa"><span id="txt-mapa" class="valor">Mapa Base</span><span class="etiqueta">· Misión</span> <span id="txt-nivel" class="valor">1</span></div>
+          <nav class="acciones" aria-label="Acciones de la partida">
+            <button class="boton boton-primario" id="btn-oleada">Iniciar oleada</button>
+            <button class="boton" id="btn-vel" aria-label="Cambiar velocidad del juego">⏩ x1</button>
+            <button class="boton" id="btn-pausa">Pausa</button>
+          </nav>
+        </header>
+
+        <div class="escenario">
+          <div class="lienzo">
+            <canvas id="juego" width="960" height="540" aria-label="Mapa del juego. Haz clic en una casilla libre para construir la torre seleccionada." role="img"></canvas>
+            <p id="mensaje" class="mensaje" role="status" aria-live="polite"></p>
+          </div>
+
+          <aside id="panel-torres" aria-label="Panel de torretas y mejoras">
+            <div class="pestanas" role="tablist" aria-label="Secciones del panel">
+              <button type="button" role="tab" id="tab-torres" data-pestana="torres" aria-selected="true" aria-controls="vista-torres">Torretas</button>
+              <button type="button" role="tab" id="tab-mejoras" data-pestana="mejoras" aria-selected="false" aria-controls="vista-mejoras">Mejoras</button>
+            </div>
+
+            <div id="vista-torres" role="tabpanel" aria-labelledby="tab-torres">
+              <ul class="lista-panel">
+                <li><button class="boton-torre" data-torre="arquero" aria-pressed="false"><span class="ico ico-arquero" aria-hidden="true"></span><span class="nombre">Arquero <kbd>1</kbd></span><span class="costo">45</span></button></li>
+                <li><button class="boton-torre" data-torre="dardero" aria-pressed="false"><span class="ico ico-dardero" aria-hidden="true"></span><span class="nombre">Dardero <kbd>2</kbd></span><span class="costo">60</span></button></li>
+                <li><button class="boton-torre" data-torre="mago" aria-pressed="false"><span class="ico ico-mago" aria-hidden="true"></span><span class="nombre">Mago <kbd>3</kbd></span><span class="costo">80</span></button></li>
+                <li><button class="boton-torre" data-torre="catapulta" aria-pressed="false"><span class="ico ico-catapulta" aria-hidden="true"></span><span class="nombre">Catapulta <kbd>4</kbd></span><span class="costo">100</span></button></li>
+                <li><button class="boton-torre" data-torre="lasser" aria-pressed="false"><span class="ico ico-lasser" aria-hidden="true"></span><span class="nombre">Lasser <kbd>5</kbd></span><span class="costo">200</span></button></li>
+                <li><button class="boton-torre boton-vender" data-torre="vender" aria-pressed="false" aria-label="Eliminar torreta (tecla 6)"><span class="ico ico-vender" aria-hidden="true"></span><span class="nombre">Eliminar <kbd>6</kbd></span><span class="costo sin-moneda">30%</span></button></li>
+              </ul>
+            </div>
+
+            <div id="vista-mejoras" role="tabpanel" aria-labelledby="tab-mejoras" hidden>
+              <ul class="lista-panel">
+                <li><button class="boton-mejora" data-mejora="velocidad"><span class="ico-m" aria-hidden="true">⚡</span><span class="texto"><strong>Velocidad de ataque</strong><small>+50 % de velocidad de ataque</small></span><span class="costo">300</span></button></li>
+                <li><button class="boton-mejora" data-mejora="dano"><span class="ico-m" aria-hidden="true">⚔</span><span class="texto"><strong>Daño</strong><small>+50 % de daño</small></span><span class="costo">300</span></button></li>
+                <li><button class="boton-mejora" data-mejora="critico"><span class="ico-m" aria-hidden="true">✦</span><span class="texto"><strong>Crítico</strong><small>25 % de probabilidad de hacer el doble de daño</small></span><span class="costo">250</span></button></li>
+              </ul>
+              <p class="nota-mejoras">Las mejoras afectan a todas tus torretas y duran toda la misión.</p>
+            </div>
+
+            <p id="info-torre" class="info-torre">Elige una torre para construir.</p>
+          </aside>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ===== VENTANAS MODALES ===== -->
+    <dialog id="pausa" aria-labelledby="t-pausa">
+      <h2 id="t-pausa">Juego en pausa</h2>
+      <div class="acciones-modal">
+        <button class="boton boton-primario" id="p-continuar">Continuar</button>
+        <button class="boton" id="p-reiniciar">Reiniciar nivel</button>
+        <button class="boton boton-sutil" id="p-menu">Volver al menú</button>
+      </div>
+    </dialog>
+
+    <dialog id="victoria" aria-labelledby="t-victoria">
+      <h2 id="t-victoria"><strong>¡Victoria!</strong></h2>
+      <p class="estrellas-grandes" id="estrellas-victoria" aria-label="Estrellas ganadas">★★★</p>
+      <p id="res-victoria"></p>
+      <div class="acciones-modal">
+        <button class="boton boton-primario" id="v-siguiente">Siguiente nivel</button>
+        <button class="boton btn-compartir">📣 Compartir</button>
+        <button class="boton" id="v-repetir">Repetir</button>
+        <button class="boton boton-sutil" id="v-menu">Menú</button>
+      </div>
+    </dialog>
+
+    <dialog id="derrota" aria-labelledby="t-derrota">
+      <h2 id="t-derrota"><strong>Derrota</strong></h2>
+      <p id="res-derrota"></p>
+      <div class="acciones-modal">
+        <button class="boton boton-primario" id="d-reintentar">Reintentar</button>
+        <button class="boton btn-compartir">📣 Compartir</button>
+        <button class="boton boton-sutil" id="d-menu">Menú</button>
+      </div>
+    </dialog>
+  </div>
+
+  <script src="js/juego.js"></script>
 </body>
 </html>
-```

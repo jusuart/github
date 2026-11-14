@@ -1,0 +1,28 @@
+monster_days - Diseño front-end (HTML, CSS y JavaScript)
+Evidencia GA6-220501096-AA4-EV03 | SENA - Análisis y Desarrollo de Software | Ficha 3336217
+
+Cómo abrirlo: descomprima el ZIP y abra index.html en un navegador (Chrome, Edge o Firefox).
+No requiere instalación ni conexión a internet.
+
+Estructura:
+  index.html       Estructura HTML (pantallas, HUD, panel de torretas/mejoras, diálogos)
+  css/estilos.css  Estilos medievales, diseño adaptable y accesibilidad
+  js/juego.js      Navegación, HUD, canvas, torretas, enemigos, oleadas y eventos
+
+Novedades de la versión 4:
+  - Arreglado: si el jefe final llega a la fortaleza ahora es DERROTA (antes salía victoria).
+  - Balance: más caras = más daño y más alcance (Arquero 110 ... Lasser 215).
+  - Lobby y mapas rediseñados y adaptables a celular; estrellas, velocidad x1/x2/x3 y botón Compartir.
+
+Novedades de la versión 3:
+  - Misiones de 5, 10, 15 y 25 oleadas (en ambos mapas).
+  - Minijefe cada 5 oleadas y jefe final en la última oleada. El jefe camina y, cada cierto
+    recorrido, duerme 3 torretas durante 4 segundos.
+  - Precios: Arquero 45, Dardero 60, Mago 80, Catapulta 100, Lasser 200 (ordenadas por precio).
+  - Pestaña "Mejoras" junto a "Torretas": velocidad de ataque (300, +50 %), daño (300, +50 %)
+    y crítico (250, 25 % de probabilidad de doble daño).
+  - La dificultad se elige en la pantalla de mapas (ya no está en Opciones).
+  - Partida rediseñada: los botones "Iniciar oleada" y "Pausa" están arriba y todo cabe sin scroll.
+  - Teclas: 1 Arquero, 2 Dardero, 3 Mago, 4 Catapulta, 5 Lasser, 6 Eliminar, Esc pausa.
+
+Valores ajustables al inicio de js/juego.js: OLEADAS_NIVEL, TORRES, MEJORAS, ENEMIGOS, JEFE_*.

@@ -1,0 +1,10 @@
+# Compilados y archivos locales
+modulo_jugadores/out/
+*.class
+fuentes.txt
+.idea/
+.vscode/
+*.iml
+# Driver JDBC (se descarga aparte)
+modulo_jugadores/lib/*.jar
+target/

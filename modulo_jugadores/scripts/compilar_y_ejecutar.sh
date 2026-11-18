@@ -4,3 +4,4 @@ set -e
 mkdir -p out
 javac -encoding UTF-8 -cp "lib/*" -d out $(find src -name "*.java")
 java -Dfile.encoding=UTF-8 -cp "out:lib/*" com.monsterdays.Principal
+

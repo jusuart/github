@@ -29,3 +29,4 @@ JDK 17 o superior · MySQL 8 o MariaDB (XAMPP sirve) · driver MySQL Connector/J
 3. Copie `mysql-connector-j-8.x.jar` en `lib/`.
 4. Desde la carpeta `modulo_jugadores`, ejecute `bash scripts/compilar_y_ejecutar.sh`
    (en Windows: `scripts\compilar_y_ejecutar.bat`). Con Maven: `mvn compile`.
+

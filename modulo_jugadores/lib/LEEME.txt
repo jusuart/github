@@ -2,3 +2,4 @@ Coloque aquí el driver JDBC de MySQL (MySQL Connector/J), por ejemplo:
   mysql-connector-j-8.4.0.jar
 Descarga: https://dev.mysql.com/downloads/connector/j/  (opción "Platform Independent")
 Si usa MariaDB puede usar mariadb-java-client y cambiar db.url a jdbc:mariadb://...
+

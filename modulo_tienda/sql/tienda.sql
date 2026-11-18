@@ -54,3 +54,4 @@ INSERT INTO mejora_torreta (torreta, nombre, descripcion, costo, bonus, nivel_ma
   ('catapulta', 'Contrapeso',        'Aumenta la velocidad de ataque.',       95,  8,  3),
   ('lasser',    'Lente de cristal',  'Aumenta el daño del Lasser.',           150, 12, 3),
   ('lasser',    'Núcleo de energía', 'Aumenta el alcance del Lasser.',        160, 10, 3);
+

@@ -49,3 +49,4 @@ INSERT INTO progreso (id_jugador, mapa, nivel, estrellas, dificultad) VALUES
   (1, 'base', 1, 3, 'normal'),
   (1, 'base', 2, 2, 'normal'),
   (2, 'infernal', 1, 1, 'dificil');
+

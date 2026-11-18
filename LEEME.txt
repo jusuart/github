@@ -26,3 +26,4 @@ Novedades de la versión 3:
   - Teclas: 1 Arquero, 2 Dardero, 3 Mago, 4 Catapulta, 5 Lasser, 6 Eliminar, Esc pausa.
 
 Valores ajustables al inicio de js/juego.js: OLEADAS_NIVEL, TORRES, MEJORAS, ENEMIGOS, JEFE_*.
+

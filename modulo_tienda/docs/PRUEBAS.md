@@ -17,3 +17,4 @@ Ejecutar con Tomcat + MySQL en marcha (http://localhost:8080/tienda/). Anotar el
 | 11 | Compra por GET | GET /compra | – | Redirige a /tienda sin comprar | ok |
 | 12 | Sin sesión | GET /tienda | sin entrar | Redirige a /entrar | ok |
 | 13 | Perfil | GET /perfil | – | Muestra compras y bonus total | ok |
+

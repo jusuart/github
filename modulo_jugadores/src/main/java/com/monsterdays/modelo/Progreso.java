@@ -112,3 +112,4 @@ public final class Progreso {
                 idProgreso, idJugador, mapa, nivel, estrellas, dificultad);
     }
 }
+

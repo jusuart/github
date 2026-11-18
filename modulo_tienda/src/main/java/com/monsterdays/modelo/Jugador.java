@@ -80,3 +80,4 @@ public final class Jugador {
                 idJugador, nombreUsuario, correo, fechaRegistro);
     }
 }
+

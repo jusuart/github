@@ -12,3 +12,4 @@
 - **Diagrama de clases:** `Jugador` (1) —— (N) `Progreso`; en la BD, `progreso.id_jugador` es clave foránea de `jugador`.
 - **Prototipo / diseño:** los valores válidos (mapas `base`/`infernal`, misiones 1–4, 1–3 estrellas, dificultad
   fácil/normal/difícil) son los mismos del front-end del juego (`index.html` y `js/juego.js`).
+

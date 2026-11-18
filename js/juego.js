@@ -1100,3 +1100,4 @@ actualizarMapas();
   }
 })();
 requestAnimationFrame(bucle);
+

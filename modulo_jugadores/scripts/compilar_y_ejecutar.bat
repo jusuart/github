@@ -13,3 +13,4 @@ if errorlevel 1 (
 )
 java -Dfile.encoding=UTF-8 -cp "out;lib/*" com.monsterdays.Principal
 pause
+

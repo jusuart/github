@@ -239,3 +239,4 @@ public class MenuConsola {
         System.out.println("Error de base de datos: " + e.getMessage());
     }
 }
+

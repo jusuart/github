@@ -9,3 +9,4 @@ public class TiendaException extends Exception {
         super(mensaje);
     }
 }
+

@@ -22,3 +22,4 @@ coherencia con el resto del proyecto.
 - Separación por capas: `vista` → `dao` → `conexion`; `modelo` valida sus propios datos.
 - Mensajes al usuario en español; identificadores sin tildes ni eñes.
 - Commits de git en español, en infinitivo/imperativo y descriptivos (p. ej. `Agregar CRUD de jugadores`).
+

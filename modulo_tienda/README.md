@@ -35,3 +35,4 @@ Mismo de EV01 (`../modulo_jugadores/docs/ESTANDAR_CODIFICACION.md`): paquetes en
 - Monedas: saldo inicial fijo de 500 por jugador (columna `jugador.monedas`).
 - Acceso: se elige o registra un jugador y se guarda en la sesión (sin contraseña).
 - Compra: una transacción (`MejoraDAO.comprar`) con `SELECT ... FOR UPDATE`; cada compra sube 1 nivel (máx. 3).
+

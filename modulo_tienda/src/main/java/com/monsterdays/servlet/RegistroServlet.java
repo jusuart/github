@@ -55,3 +55,4 @@ public class RegistroServlet extends HttpServlet {
         solicitud.getRequestDispatcher(VISTA).forward(solicitud, respuesta);
     }
 }
+

@@ -23,3 +23,4 @@ public class SalirServlet extends HttpServlet {
         respuesta.sendRedirect(solicitud.getContextPath() + "/entrar");
     }
 }
+

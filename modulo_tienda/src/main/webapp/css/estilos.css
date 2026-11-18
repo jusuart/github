@@ -1,0 +1,21 @@
+body { margin: 0; font-family: Georgia, serif; background: #2b2118; color: #f2e6d0; }
+.encabezado { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+  padding: 10px 20px; background: #4a3624; border-bottom: 3px solid #c9a24b; }
+.encabezado h1 { margin: 0; font-size: 1.4rem; color: #c9a24b; }
+.encabezado nav a, .monedas { margin-left: 14px; color: #f2e6d0; }
+main { max-width: 960px; margin: 20px auto; padding: 0 16px; }
+h2, h3 { color: #c9a24b; }
+form label { display: block; margin: 10px 0 4px; }
+input, select { padding: 6px; min-width: 220px; }
+button { padding: 6px 14px; background: #c9a24b; border: 0; cursor: pointer; font-weight: bold; }
+table { width: 100%; border-collapse: collapse; margin-top: 14px; }
+th, td { border: 1px solid #6b5238; padding: 6px 8px; text-align: left; }
+th { background: #4a3624; }
+.filtro { display: flex; flex-wrap: wrap; gap: 8px; align-items: end; }
+.filtro label { margin: 0; }
+.aviso { padding: 8px 12px; border-radius: 4px; }
+.aviso.ok { background: #2e5b34; }
+.aviso.error { background: #7a2a2a; }
+.pie { text-align: center; padding: 14px; font-size: .8rem; color: #b8a888; }
+a { color: #e4c777; }
+@media (max-width: 640px) { table { font-size: .8rem; } }

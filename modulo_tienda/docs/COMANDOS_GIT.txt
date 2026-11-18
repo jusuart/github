@@ -1,0 +1,13 @@
+Ejecutar en la carpeta del repositorio (donde está la carpeta modulo_tienda):
+
+git add modulo_tienda/pom.xml modulo_tienda/sql modulo_tienda/src/main/resources
+git commit -m "Agregar script SQL de la tienda y configuración de conexión"
+git add modulo_tienda/src/main/java/com/monsterdays/conexion modulo_tienda/src/main/java/com/monsterdays/modelo modulo_tienda/src/main/java/com/monsterdays/dao
+git commit -m "Agregar modelo, DAO y conexión de la tienda de mejoras"
+git add modulo_tienda/src/main/java/com/monsterdays/servlet
+git commit -m "Agregar servlets de registro, entrada, tienda, compra y perfil"
+git add modulo_tienda/src/main/webapp
+git commit -m "Agregar vistas JSP, estilos y web.xml de la tienda"
+git add modulo_tienda/README.md modulo_tienda/docs ENLACE_REPOSITORIO.txt
+git commit -m "Agregar README, documento de pruebas y enlace del repositorio"
+git push origin main
